@@ -1,0 +1,8 @@
+.idea/
+autoliter.egg-info/
+build/
+dist/
+
+output/
+paper/
+paper.md
