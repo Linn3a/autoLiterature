@@ -2,7 +2,7 @@ import logging
 import argparse
 import os 
 
-from .utils import patternRecognizer, note_modified, get_pdf_paths, get_pdf_paths_from_notes, get_update_content, get_pdf_paths_from_notes_dict
+from autoliterature.utils import patternRecognizer, note_modified, get_pdf_paths, get_pdf_paths_from_notes, get_update_content, get_pdf_paths_from_notes_dict
 
 logging.basicConfig()
 logger = logging.getLogger('AutoLiter')
@@ -43,7 +43,7 @@ def get_bib_and_pdf(note_file, output_path, proxy, paper_recognizer):
     if not os.path.exists(pdfs_path):
         os.makedirs(pdfs_path)
     
-    with open(note_file, 'r') as f:
+    with open(note_file, 'r', encoding='utf-8') as f:
         content = f.read()
             
     m = paper_recognizer.findall(content)
@@ -60,7 +60,7 @@ def get_bib_and_pdf(note_file, output_path, proxy, paper_recognizer):
 
 def file_update(input_path, output_path, proxy, paper_recognizer):
     
-    replace_dict =  get_bib_and_pdf(input_path, output_path,
+    replace_dict = get_bib_and_pdf(input_path, output_path,
                                     proxy, paper_recognizer)
     
     if replace_dict:

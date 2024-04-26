@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='UTF-8') as f:
 
 setup(
     name="autoliter",
-    version="0.1.3",
+    version="0.1.5",
     description=" Helps you manage your literature notes",
     long_description=README_MD,
     long_description_content_type='text/markdown',

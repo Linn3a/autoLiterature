@@ -88,7 +88,7 @@ class BMxivInfo(object):
         urls = [self.base_url + server + "/" + bmrxivid for server in self.servers]
         for url in urls:
             try:
-                r = self.sess.get(url)
+                r = self.sess.get(url, proxies=self.sess.proxies)
 
                 bib = r.json()['collection'][-1]
                 
@@ -130,7 +130,7 @@ class BMxivInfo(object):
         
         url = base_url.format(query)
         try:
-            result = self.sess.get(url)
+            result = self.sess.get(url, proxies=self.sess.proxies)
             soup = BeautifulSoup(result.content, "lxml")
             soup_items = soup.find_all("div",class_="highwire-cite highwire-cite-highwire-article highwire-citation-biorxiv-article-pap-list clearfix")
             

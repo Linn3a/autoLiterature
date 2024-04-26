@@ -91,7 +91,7 @@ class crossrefInfo(object):
         url = url.format(self.base_url, doi)
         
         try:
-            r = self.sess.get(url)
+            r = self.sess.get(url, proxies=self.sess.proxies)
 
             bib = r.json()['message']
             return self.extract_json_info(bib)
@@ -122,7 +122,7 @@ class crossrefInfo(object):
         url = self.base_url + "works"
         params = {"query.bibliographic": title, "rows": 20}
         try:
-            r = self.sess.get(url, params=params)
+            r = self.sess.get(url, params=params, proxies=self.sess.proxies)
             items = r.json()["message"]["items"]
             
             for i, item in enumerate(items):

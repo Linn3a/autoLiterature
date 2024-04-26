@@ -86,7 +86,7 @@ class arxivInfo(object):
                 "title": xxx,
                 "author": xxx,
                 "journal": xxx,
-                etc
+                etc.
             } 
             OR
             None
@@ -98,13 +98,13 @@ class arxivInfo(object):
             if handler:
                 result = feedparser.parse(self.base_url + params, handlers=[handler])
             else:
-                result = feedparser.parse(self.base_url  + params)
+                result = feedparser.parse(self.base_url + params)
             items = result.entries
 
             item = items[0]
             if "arxiv_doi" in item:
                 doi = item["arxiv_doi"]
-                
+
                 crossref_info = crossrefInfo()
                 if handler:
                     crossref_info.set_proxy(proxy=handler.proxies["http"].split('//')[-1])

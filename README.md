@@ -72,3 +72,7 @@ autoliter -i input/example.md -m movedPDFs/
 
 ## License
 MIT
+
+## TODO
+- [x] fix `:` in the title
+- [ ] 更优雅的相对路径处理方法

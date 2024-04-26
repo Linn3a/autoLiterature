@@ -31,12 +31,13 @@ def classify(identifier):
     medbiorxivId - medrxiv or biorxiv id
     title - title
     """
-    if check_string(r'10\.(?!1101)[0-9]{4}/\.*', identifier):
+    if check_string(r'[0-9]{2}[0-1][0-9]\.[0-9]{3,}.*', identifier) or check_string(r'.*/[0-9]{2}[0-1][0-9]{4}', identifier):
+        return 'arxivId'
+    elif check_string(r'10\.(?!1101)[0-9]{4}/\.*', identifier):
         return 'doi'
     elif check_string(r'10\.1101/\.*', identifier):
         return "medbiorxivId"
-    elif check_string(r'[0-9]{2}[0-1][0-9]\.[0-9]{3,}.*', identifier) or check_string(r'.*/[0-9]{2}[0-1][0-9]{4}', identifier):
-        return 'arxivId'
+
     elif check_string(r'[a-zA-Z\d\.-/\s]*', identifier):
         return 'title'
     else:
